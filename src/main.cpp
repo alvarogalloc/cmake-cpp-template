@@ -1,5 +1,5 @@
-#include <iostream>
+import mymodule;
 
-int main (const int  /*argc*/, const char*  /*argv*/[]) {
-  std::cout << "helloworld\n";
+int main(int /*argc*/, char */*argv*/[]) {
+  mymodule::sayhello(); 
 }
