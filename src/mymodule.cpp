@@ -1,13 +1,8 @@
-module;
-#include <iostream>
-
 export module mymodule;
+import stdmodule;
+
 export namespace mymodule {
-void sayhello();
-}
+template<typename T> constexpr T add(T a, T b) { return a + b; }
 
-module :private;
-
-namespace mymodule {
-void sayhello() { std::cout << "hello from module!!\n"; }
 }// namespace mymodule
+
