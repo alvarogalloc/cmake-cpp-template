@@ -23,7 +23,7 @@ target_sources(stdmodule PUBLIC
 add_library(boostut)
 target_sources(boostut PUBLIC
   FILE_SET CXX_MODULES FILES
-  misc/boostut.cpp
+  misc/ut.cpp
 )
 target_link_libraries(boostut PUBLIC stdmodule)
 
