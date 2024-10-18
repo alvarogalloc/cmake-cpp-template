@@ -2,16 +2,23 @@ message("Testing Enabled")
 
 enable_testing()
 
-add_executable(tests
-    test_main.cpp
+add_library(ut)
+target_sources(ut PUBLIC
+  FILE_SET CXX_MODULES FILES
+  misc/ut.cpp
 )
 
 #exclude test_main.cpp from the list of source files
 file(GLOB_RECURSE TEST_MODULES
-  *.cpp
+  modules/*.cppm
+)
+file(GLOB_RECURSE TEST_SOURCES
+  src/*.cpp
 )
 
-list(REMOVE_ITEM TEST_MODULES ${CMAKE_CURRENT_SOURCE_DIR}/test_main.cpp)
+add_executable(tests
+  ${TEST_SOURCES}
+)
 
 target_sources(tests PUBLIC 
   FILE_SET CXX_MODULES FILES
@@ -21,7 +28,7 @@ target_sources(tests PUBLIC
 target_link_libraries(tests
   PRIVATE
   exe_lib
-  boostut
+  ut
 )
 
 add_test(NAME tests COMMAND tests)

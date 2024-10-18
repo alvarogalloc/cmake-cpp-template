@@ -7,8 +7,6 @@ set(CMAKE_CXX_MODULE_STD ON)
 
 project(rooster CXX)
 
-
-
 include(cmake/setup.cmake)
 
 # if clang, push ignore for deprecated declarations
@@ -16,17 +14,19 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wno-deprecated-declarations)
 endif()
 
-add_library(boostut)
-target_sources(boostut PUBLIC
-  FILE_SET CXX_MODULES FILES
-  misc/ut.cpp
+
+file(GLOB_RECURSE EXE_MODULES
+  modules/*.cppm
 )
+file(GLOB_RECURSE EXE_SOURCES
+  src/*.cpp
+)
+
+list(REMOVE_ITEM EXE_SOURCES "src/main.cpp")
 
 add_executable(exe src/main.cpp)
 
-file(GLOB_RECURSE EXE_MODULES CONFIGURE_DEPENDS src/mymodule.cpp)
-
-add_library(exe_lib)
+add_library(exe_lib ${EXE_SOURCES})
 
 target_link_libraries(exe_lib PUBLIC rooster_project_options)
 target_link_libraries(exe_lib PRIVATE rooster_project_warnings)
@@ -36,7 +36,6 @@ target_sources(exe_lib PUBLIC
   ${EXE_MODULES}
 )
 
-target_include_directories(exe PRIVATE include)
 target_link_libraries(exe PUBLIC exe_lib)
 target_link_libraries(exe_lib PRIVATE rooster_project_warnings)
 
