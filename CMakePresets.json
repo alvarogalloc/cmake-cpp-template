@@ -17,6 +17,7 @@
       "inherits": "default",
       "name": "dev",
       "description": "Development preset",
+      "binaryDir": "${sourceDir}/build-dev",
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "CMAKE_BUILD_TYPE": "Debug",
@@ -28,6 +29,7 @@
       "inherits": "default",
       "name": "rel",
       "description": "Release preset",
+      "binaryDir": "${sourceDir}/build-rel",
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "OFF",
         "CMAKE_BUILD_TYPE": "Release",

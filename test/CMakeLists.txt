@@ -20,7 +20,6 @@ target_sources(tests PUBLIC
 
 target_link_libraries(tests
   PRIVATE
-  stdmodule
   exe_lib
   boostut
 )

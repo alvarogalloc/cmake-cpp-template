@@ -1,5 +1,5 @@
 import mymodule;
-import stdmodule;
+import std;
 
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[])
