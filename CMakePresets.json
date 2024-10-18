@@ -2,7 +2,7 @@
   "version": 3,
   "cmakeMinimumRequired": {
     "major": 3,
-    "minor": 28
+    "minor": 30
   },
   "configurePresets": [
     {
@@ -20,6 +20,17 @@
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "CMAKE_BUILD_TYPE": "Debug",
+        "APP_BUILD_TESTING": "ON",
+        "CMAKE_LINKER_TYPE": "LLD"
+      }
+    },
+    {
+      "inherits": "default",
+      "name": "rel",
+      "description": "Release preset",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "OFF",
+        "CMAKE_BUILD_TYPE": "Release",
         "APP_BUILD_TESTING": "ON",
         "CMAKE_LINKER_TYPE": "LLD"
       }
